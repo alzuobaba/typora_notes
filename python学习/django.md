@@ -1,5 +1,7 @@
 # django学习
 
+[TOC]
+
 ##  django 创建project
 
 加入代码存放目录 执行命令
@@ -190,5 +192,7 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
 ```
+
+
 
 model类继承 `django.db.models.Model` ,并且每一个model类都有数个类变量，这些类变量会存储在数据库里作为colume_name
