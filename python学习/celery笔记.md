@@ -2,7 +2,7 @@
 
 ### Celery 是什么？
 
-Celery 是 Python 语言实现的分布式队列服务，除了支持即时任务，还支持定时任务，Celery 有5个核心角色。
+Celery 是 Python 语言实现的分布式队列服务，除了支持即时任务，还支持定时任务，Celery 有几个核心角色。
 
 ### 1、Task
 
@@ -22,9 +22,15 @@ Beat 是一个定时任务调度器，它会根据配置定时将任务发送给
 
 ### 5、Backend
 
-Backend 用于保存任务的执行结果，每个任务都有返回值，比如发送邮件的服务会告诉我们有没有发送成功，这个结果就是存在Backend中，当然我们并不总是要关心任务的执行结果。
+Backend 用于保存任务的执行结果，每个任务都有返回值，比如发送邮件的服务会告诉我们有没有发送成功，这个结果就是存在Backend中，当然我们并不总是要关心任务的执行结果。Celery默认已支持Redis、RabbitMQ、MongoDB、Django ORM、SQLAlchemy等方式。
 
-![584bbf78e1783.png](celery%E7%AC%94%E8%AE%B0/584bbf78e1783.png)
+### 6、Producer
+
+调用了Celery提供的API、函数或者装饰器而产生任务并交给任务队列处理的都是任务生产者。
+
+![img](celery%E7%AC%94%E8%AE%B0.assets/bed316c5eeffaea1e09eff340be15361_hd.png)
+
+![img](celery%E7%AC%94%E8%AE%B0.assets/584bbf78e1783.png)
 
 记住这5个角色后面理解Celery就轻松了。
 
@@ -89,7 +95,7 @@ celery -A tasks worker --loglevel=info
 
 -A： 指定 celery 实例在哪个模块中，例子中，celery实例在tasks.py文件中，启动成功后，能看到信息
 
-![celeyrun.png](celery%E7%AC%94%E8%AE%B0/celeyrun.png)
+![celeyrun.png](celery%E7%AC%94%E8%AE%B0.assets/celeyrun.png)
 
 函数用app.task 装饰器修饰之后，就会成为Celery中的一个Task。
 
@@ -137,7 +143,7 @@ if __name__ == '__main__':
 
 在worker服务窗口看日志信息
 
-![celerywork.png](celery%E7%AC%94%E8%AE%B0/celerywork.png)
+![celerywork.png](celery%E7%AC%94%E8%AE%B0.assets/celerywork.png)
 
 ### 注意：
 
