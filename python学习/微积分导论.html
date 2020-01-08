@@ -1,0 +1,785 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>微积分导论</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded md-focus" lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap CodeMirror-focused" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  微积分导论(一)__台湾新竹“清华大学” &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 45px;"></div><div class="CodeMirror-gutters" style="display: none; height: 45px;"></div></div></div></pre><h2><a name="week1-limitandcontinuousfunction" class="md-header-anchor"></a><span>WEEK1 LimitandContinuousfunction</span></h2><p><span>  {1}--01极限概念简介</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004593071_2eb2ea96f4634a2eb67e6b9e2373aefe_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee6745a65f2ec66ef8be5ed47f8852e0c17bee463b9e1b09face3f4fe2bc9362fe34485066a195b876b26607a1bf013b1a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.1.1]--01极限概念简介</span></a>
+<span>  {2}--02-01极限的定义</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004592060_cda8672cc4174d1289b63a290225112a_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee24f7f687d59220230f301ba5dc22784eadcc646b2eb99296a6221e4b529b608594f66a702fd1f02bda140d313b8e25fe0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.2.1]--02-01极限的定义</span></a>
+<span>  {3}--02-02极限的定义（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004593072_714a8fe68c414ed7ae82e46b5e659a6e_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee24f7f687d59220230f301ba5dc22784e99a5aa17b0f8d509d140853717490226288686854f7e16893ce64e2abda1f65f0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.3.1]--02-02极限的定义（续）</span></a>
+<span>  {4}--03-01例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004591054_67b8bac10e40418ba6d0a9531eef885c_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee24f7f687d59220230f301ba5dc22784ed53a1e165325c50531a8f8e2d27862228db0fe8767ea8de0a16736f57fa170400015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.4.1]--03-01例题讲解</span></a>
+<span>  {5}--03-02例题讲解（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004590070_b552567749ac4960acde5be5eaaedf63_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee8b5aa0e05e8d05f5e10d9c4ec77a65bde729481876c3416208f0c5ea6e1c0cdd752b9ddaff3e2d0a7da19f495a3182f40015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.5.1]--03-02例题讲解（续）</span></a>
+<span>  {6}--04例题讲解（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004591055_573f3d4d1f0e465c97b36e988980f38a_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee8b5aa0e05e8d05f5e10d9c4ec77a65bd04f85956a17a271e985e21ef324ec99ccb375a1c69348c1f974b7cbceafa32b40015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.6.1]--04例题讲解（续）</span></a>
+<span>  {7}--05例题讲解（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004590071_452ae9d709c54ea895bcf0a1432c93e3_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeefbdab2599b637babfe8268ce62efd560e91b2e6a3f5eb1c11a7f5691695d033e943ba7db5c022c135bcf51d1e942a1b0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.7.1]--05例题讲解（续）</span></a>
+<span>  {8}--06左极限与右极限</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004592061_0f846e80ebab4ac284b2c87db374db5a_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeefbdab2599b637babfe8268ce62efd567472f9b4b80f557a3e7d049e66275f3d707ec23a85de62cd706311b79beb95f10015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.8.1]--06左极限与右极限</span></a>
+<span>  {9}--07极限唯一性</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/08/1004500051_f561e5cb86a04971a1cd60ff1082f314_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee265ee6984102887f630058eac63156e0dc68142a50b961248d99ca5bb7f934bdb27c038c0b3b46f66ef810a386b70f040015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.9.1]--07极限唯一性</span></a>
+<span>  {10}--08极限四则运算（加法、常数倍）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004592062_86c285de0ebd40da9430d00500c13652_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee265ee6984102887f630058eac63156e0088e45bea9aaa26cd46403b16337117c0106888b5ef89b5bf1ce1a103e170e840015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.10.1]--08极限四则运算（加法、常数倍）</span></a>
+<span>  {11}--09极限四则运算（加法、常数倍）（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004593070_a29d8390567346b5bc53c057fa460529_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceed20a596aba31071b88643ab828f1dd9624930742fe80b8c724b26b888d96bb6a94acec36f04b539cdde9e3c7f75b25cf0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.11.1]--09极限四则运算（加法、常数倍）（续）</span></a>
+<span>  {12}--10极限四则运算（乘法）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004590072_1563c3ecb8e14ae7847857dafa625d2f_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceed20a596aba31071b88643ab828f1dd962629365645e5e79620666ba5d5f2a43b72ffd92fe5ac6a0c375e8529c91384900015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.12.1]--10极限四则运算（乘法）</span></a>
+<span>  {13}--11极限四则运算（乘法）（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004591053_698c1c0169e545dd9567c02f522deeb9_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee09330d2f7aaad3e2df80372e51007f0f339bf6f9d4f2a3991947ceb34ec7f9da180e3ca3b2a7a1349b3956b139c3e6620015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.13.1]--11极限四则运算（乘法）（续）</span></a>
+<span>  {14}--12极限四则运算（多项式、倒数）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004590073_d3ca5006d99b491aa5caf5b98e2b4a41_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee09330d2f7aaad3e2df80372e51007f0f5261da0227c0447f932de49ec0d4d75665c12c89f8f74d028ec85a394c85350c0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.14.1]--12极限四则运算（多项式、倒数）</span></a>
+<span>  {15}--13极限四则运算（倒数、除法）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004593073_82eed0af2529484895f2640ae2ac7910_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee9961e8f16e2babfedde952b5daf1c1a24dbd9f74da8aa2c386b203085a804cd70ce4b8e983227a57c4484029f65ed75d0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.15.1]--13极限四则运算（倒数、除法）</span></a>
+<span>  {16}--14连续和不连续的定义</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/25/1004591056_eac8dbf7891c4d1db321acac652d5b8b_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee9961e8f16e2babfedde952b5daf1c1a205ba74d2f6eeec14bb0ad8814a1657ca5a446d882485e714de5c298a082c45af0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[1.16.1]--14连续和不连续的定义</span></a></p><h2><a name="week2-continuityanddifferentiation" class="md-header-anchor"></a><span>WEEK2 ContinuityandDifferentiation</span></h2><p><span>  {1}--15连续-例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/07/04/1004626048_e7d6ae1216ba480586dc35763db838db_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee6dab9e55cbcbcfa55c02ba3fd2d1c64816867f6dc8566ef67358843258f3f2b9d64e822d61e2d7c5e5413685b91c6bc90015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.1.1]--15连续-例题讲解</span></a>
+<span>  {2}--16连续-四则运算、例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592113_7f2f7dc98a9f4e419fcce0a8971720e1_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee6dab9e55cbcbcfa55c02ba3fd2d1c648e110e2dd8a9f9f78f48e9f2ad245bc613901f9cf16053e4f0806cc28f6b558240015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.2.1]--16连续-四则运算、例题</span></a>
+<span>  {3}--17连续-合成函数</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593136_e1c9bc0220df48cfa314f198674e1ca4_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee8ff9449bf9718109842de8cd463df304b24810fb28caafa791090caa1a1ce9caf4655dd06b1b2d8172afdc3ab972f2a90015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.3.1]--17连续-合成函数</span></a>
+<span>  {4}--18夹挤定理</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590138_46bd80c958df4db19256549ce87e6eb4_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee8ff9449bf9718109842de8cd463df304fd5477c1bb3b6f959673e6ffd022eb1b56c8943587884397b9ba19439a227ffe0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.4.1]--18夹挤定理</span></a>
+<span>  {5}--19三角函数极限</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593137_2a2da4aff0274cecbd519812e2a365f3_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceed1be3b3f154475068d3fa841b107fdb88f3c85b56adf273a8ecf6a9159d85d7e21ff2b589f09c3be436cfc54984e8b980015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.5.1]--19三角函数极限</span></a>
+<span>  {6}--20三角函数极限（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591119_9750c63597344b35936e93437ef3dc3f_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceed1be3b3f154475068d3fa841b107fdb8a902bb299ca6c9a07c29ee5bab966e7c7472baaf0b18a7942ddb2bb93e59d4070015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.6.1]--20三角函数极限（续）</span></a>
+<span>  {7}--21三角函数极限（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591117_d9bb63742306451bb47d73158530ae7c_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee183a71fdc7d1f792c90fd5d6aac79c9c83399fcb08ca7b1b18109c756c9ea94c6000ffd4843125f965d469e114b167740015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.7.1]--21三角函数极限（续）</span></a>
+<span>  {8}--22三角函数极限-例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593138_3dc35cb04c7249469e0c72d6287f52cb_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee183a71fdc7d1f792c90fd5d6aac79c9ccd63b71d5d37e1c5acfa60d600427a962cdf69338aee07cc1be0506a8499c9f80015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.8.1]--22三角函数极限-例题讲解</span></a>
+<span>  {9}--23中间值定理与极值定理</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593135_c69d711fe96f4abd8feb396e3b4aa466_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee904db30ddb7f9ac3f821f37702c31daa221dc0fea3386cb783dac2b027573139f60b4745344586759c941fd07e6f58320015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.9.1]--23中间值定理与极值定理</span></a>
+<span>  {10}--24导函数定义、例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592114_0be80e21b8df425b82aad050181f4db6_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee904db30ddb7f9ac3f821f37702c31daa47997635a03c6571100400e360a21772a6d7efc2da60557c6b0be1634249ffe40015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.10.1]--24导函数定义、例题讲解</span></a>
+<span>  {11}--25例题讲解(续)</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592116_8e70d1104dd74faea1e8984970bb7842_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee7ebaca61ef815c058b3a30405262cc71dfc833688025c3354719ee913e48c8b64283d29032498fcdc362c0882a9080cd0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.11.1]--25例题讲解(续)</span></a>
+<span>  {12}--26微分与连续；微分运算(例题)</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590139_58bfa7b1d689495ba0c17fcae7c73596_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee7ebaca61ef815c058b3a30405262cc711bbd429fde21bea10d843accbc65843207ba719daf2baac44945378adea5fb810015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.12.1]--26微分与连续；微分运算(例题)</span></a>
+<span>  {13}--27微分四则运算-加法、常数倍</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591118_d6ce9b5fd0f1490e9d9b36a9ead3a772_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee5033d93c79cf4da9187726e36fc125da54aea0ba1238e8eb9f4586da21bdacbf28d1f476f1865991d00171fb0f3bb19b0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.13.1]--27微分四则运算-加法、常数倍</span></a>
+<span>  {14}--28微分四则运算-乘法</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592115_86a32c336c8041878f8b24bc3007eaa9_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee5033d93c79cf4da9187726e36fc125dac5f0d91c13e318f39dd1b5dcd18ea77c55e9e0b539501111660f2b4d6f7109040015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[2.14.1]--28微分四则运算-乘法</span></a></p><h2><a name="week3-differentiationandthemeanvaluetheorem" class="md-header-anchor"></a><span>WEEK3 DifferentiationandtheMeanValueTheorem</span></h2><p><span>  {1}--29幂法则1、例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591121_7d850ca8ccc74673a6efc52d57c2f8ac_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceebc678acf308eca40ea0cfcbe9f3bba6adc0b93b01f01d291353bc06c7144b937d7c27e5e7f83827032de71788d85a9a80015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.1.1]--29幂法则1、例题讲解</span></a>
+<span>  {2}--30微分四则运算-倒数</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593142_0a8c9dfd31e04e2fb3160fbcd0a9163e_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceebc678acf308eca40ea0cfcbe9f3bba6a00e672f375f178f2f0d10584615cf36a9564fb0557b406cc0892cc8c09d9dc5c0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.2.1]--30微分四则运算-倒数</span></a>
+<span>  {3}--31幂法则2；微分四则运算-商法则</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593143_b91f925e39b3401b848729472e518e54_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceee85dbf6af1d17f680ef2f921d24cd085206c6e2c3cd71fe3067625d269e8f41b7f6f070be53f909074e4ab001c3437140015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.3.1]--31幂法则2；微分四则运算-商法则</span></a>
+<span>  {4}--32例题讲解、二次微分</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593141_766e733a66474bcbb6229cb16089d46b_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceee85dbf6af1d17f680ef2f921d24cd08566cf4612354811b4c591fb0e19991b418cb6f36a4b5391ae0a1e20d7dd75bc710015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.4.1]--32例题讲解、二次微分</span></a>
+<span>  {5}--33链锁律-例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592124_c3bea7cc58424974950a91260ed0b2d0_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceee9d4979445893263ebc327641b100053a8e3500cd6ec4520a950f6ea0adea3e0cc70f0c8ea58cb36543b7dfe594bee540015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.5.1]--33链锁律-例题讲解</span></a>
+<span>  {6}--34例题讲解(续)</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591122_e741a351ec894000b102720a33e47768_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceee9d4979445893263ebc327641b100053a9fca12dd51e087123759f5832d2cb25afd0d67463bbcbefd313b18400557ff10015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.6.1]--34例题讲解(续)</span></a>
+<span>  {7}--35三角函数微分</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591120_c492ee3af533411e88bcb1a48bd7a650_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee1667d510874b9b9060aaa0a71c831d757deb9f7062d67145139b7fbe5d3fadf6c7d7e3edcf13b5b9f872200afea922e70015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.7.1]--35三角函数微分</span></a>
+<span>  {8}--36三角函数微分(续)</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592123_092f8b5498424c1b95fa9b1bc89c2c08_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee1667d510874b9b9060aaa0a71c831d75f446479596f16bbd00472e478576ff728b7e3642768274fe3c259b8ea9bcd5d40015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.8.1]--36三角函数微分(续)</span></a>
+<span>  {9}--37三角函数链锁律、例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593140_1a7a8e7bf31b454995f125045fb2da51_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee04026db245a3a8d2cbe68241397a05013cf62675823db335d18c0abdb7daefa4af41ba8a1fe79ec4e75042a66e57c8880015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.9.1]--37三角函数链锁律、例题讲解</span></a>
+<span>  {10}--38例题讲解(续)</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591123_405ad0d1baf345bd85251dcc43f265d6_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee04026db245a3a8d2cbe68241397a0501ad28590c1447d22349b442ca562ed129406a5a2cc0c9f21728bd484df0be518a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.10.1]--38例题讲解(续)</span></a>
+<span>  {11}--39隐函数微分-例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590140_108735fbe14744458a1bf9ec696bc8de_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee14a8b20ed19f8f0de066ddd4a2f809f03525cc94a04b978b62e006e82088e0caa9f679eaecdaed8d9d36bc11b0b63f100015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.11.1]--39隐函数微分-例题讲解</span></a>
+<span>  {12}--40例题讲解(续)</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590141_ba0f0fb27cc545f99784dd5ba7e3287b_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee14a8b20ed19f8f0de066ddd4a2f809f048c7f5aa24e809dc8b88b9eed64beef8f948a78034fc0e9dc133902c24285b9a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.12.1]--40例题讲解(续)</span></a>
+<span>  {13}--41幂法则有理数版、例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591124_bdb977d5dff44df5ac65496e0c7d2684_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee73ccf7861bb86cafdf7c17c48a18412bf04e55de83dd77698510e84120013c1c3e867417c429e0ebf8f0fd931f276d810015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.13.1]--41幂法则有理数版、例题</span></a>
+<span>  {14}--42均值定理-前置</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592125_4b1766cefdb944409224b697b1dd0b69_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee73ccf7861bb86cafdf7c17c48a18412bf7127f97326de6c0c4ca2bfa37febdf564481b8d0e6224097f8815879ad0ea3e0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[3.14.1]--42均值定理-前置</span></a></p><h2><a name="week4-meanvaluetheorem" class="md-header-anchor"></a><span>WEEK4 Meanvaluetheorem</span></h2><p><span>  {1}--43洛尔(Rolle’s)定理</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592133_9ee4d5ed04a941779e1bb51234145931_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee6fca901a4ecd1b4e440f23a04a82724ae7fa6b8bb69f6b8264c41239266d7897f95d6f4be2dcf4725fb00d9be9bb858c0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.1.1]--43洛尔(Rolle’s)定理</span></a>
+<span>  {2}--44均值定理</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593149_562269abba254220bab47eaad3611d44_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee6fca901a4ecd1b4e440f23a04a82724a71d44cd1a26e6569829b9718976a98d05f65954941b1a0c4d00d17e22a7b5ef10015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.2.1]--44均值定理</span></a>
+<span>  {3}--45均值定理-例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591130_abea183cd93749b884d16ed73a064575_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee4ebf96f79cad17d384bbe9546698b015aa2046b4a0ee32adc249b56100b0c262fa4563db02dbd67b91da8ebb850ae37b0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.3.1]--45均值定理-例题</span></a>
+<span>  {4}--46递增递减函数-定义及例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592129_e7084e18b85f4dab8080e6691e5ff267_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee4ebf96f79cad17d384bbe9546698b015be900c23ba9ea59eafdc41f990103c867092c7790b84c49c08b79e1103d57a200015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.4.1]--46递增递减函数-定义及例题</span></a>
+<span>  {5}--47递增递减函数性质3.2.4</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593151_391ed1ddc39941b2a463b229e379cd90_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceecf44821b762d3fdf2b3ddfbc1584819491bec8d1434be482ea2024c44e5c2fcb153fbd2e12ca9a4f52ae7cfd130410310015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.5.1]--47递增递减函数性质3.2</span></a>
+<span>  {6}--48递增递减函数性质3.2.5</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591136_f132034334d14026b286bff233381dce_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceecf44821b762d3fdf2b3ddfbc158481941fd7ff58340a153d459cb92731a24eb0b750e068fe574cb01c730cd8301bcfee0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.6.1]--48递增递减函数性质3.2.5</span></a>
+<span>  {7}--49递增递减函数-例题1</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591137_cb32b5257eb946cd95823913e3dcdc63_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee57ab5df24a6406e4444f7e899ca9cc91b13329604e2b1a780a7d961d85b73596455e021aa55f5162e17cd3986c6f389c0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.7.1]--49递增递减函数-例题1</span></a>
+<span>  {8}--50递增递减函数-例题2</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593153_a51a0c58988a4f67b8143576df4ad2c1_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee57ab5df24a6406e4444f7e899ca9cc91784a9e1d1c5e349bc222d65e1bae6532dbc2a07e99a246438b395c6ce5fb96050015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.8.1]--50递增递减函数-例题2</span></a>
+<span>  {9}--51局部极值-定义</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593150_166f42538eb142729358629f301ad569_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceec0ae56c16f9064c91074544d4ec992368096bb1630ef057b51370ee931677ee6bfc3a4f91fcdf7429795517c46396d860015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.9.1]--51局部极值-定义</span></a>
+<span>  {10}--52局部极值-定理</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590145_b731810a4f534a8d9f7323daf14b0366_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceec0ae56c16f9064c91074544d4ec992364bf2f7e3579db50bc80b100f92a0f54138434f6c6f698e0bd01d2fea33bc52900015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.10.1]--52局部极值-定理</span></a>
+<span>  {11}--53临界点-例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591138_fed45f00a3114fc3ba1009c736a00f72_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee64998b6d7bd60eb28f9929173d6d16a51bf744a4063a940902bedcda04e161244f1e7d26fd846632893e015b12f82f940015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.11.1]--53临界点-例题</span></a>
+<span>  {12}--54一阶导函数检验法</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590146_88408fb30b704c56b9ec98aa7f80071f_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee64998b6d7bd60eb28f9929173d6d16a5a0cd7fde678ee426cfca67257c7f984717aa68cca3908a4e4f156fb0644b31cf0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.12.1]--54一阶导函数检验法</span></a>
+<span>  {13}--55例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593154_6521be6921fa48fca02d39b99e7af4dd_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee3c834ab408d0175b8833a9e6f9217a96ede7203c499009675f31d69627a5ee61c71a87668ca7ff5b9e40b2a6667701450015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.13.1]--55例题讲解</span></a>
+<span>  {14}--56二阶导数测试</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592130_d1f0df07808f426991c189b6cde96bdb_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee3c834ab408d0175b8833a9e6f9217a965c8158da0eac67106c8b9455d709af384c0f6ea43ee94ae85af3c2b5e217171e0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[4.14.1]--56二阶导数测试</span></a></p><h2><a name="week5-applications-of-the-first-and-second-derivatives-and-integral" class="md-header-anchor"></a><span>WEEK5 Applications of the first and second derivatives and Integral</span></h2><p><span>  {1}--57绝对极值</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004593174_200c30d315734d649c0c18bcc5d5faba_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee3c834ab408d0175b8833a9e6f9217a9622921762a04fde875c969e93551023de6288718714242040dd2c5cb46cc9949a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.1.1]--57绝对极值</span></a>
+<span>  {2}--58凹凸性</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004591141_ae8381d5104b409881ac0d23afa79375_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee29ba32ce93052f712d705e15b6bd28744403fd447c1f7767d464d9ea3e0e6b817df2f05856ec0ff25ea7fd0e67ca8fb90015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.2.1]--58凹凸性</span></a>
+<span>  {3}--59反曲点</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593164_3c64b736106948afbb6c3dbf46f79406_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee29ba32ce93052f712d705e15b6bd28746ea4f589c153f4e072a13654855fe4a27ecfd40a424cf15da74993badcdb24160015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.3.1]--59反曲点</span></a>
+<span>  {4}--60例题讲解</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593161_1435c96d22ec466ab2fe75f571b479ce_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceefdb5299d3646c69cd84d46cdcc504c9f9cafb72f602a7b8b30ec0c4b4f3438bec79ea196da0be00eb663c7fda12c95a10015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.4.1]--60例题讲解</span></a>
+<span>  {5}--61数列极限的定义</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590151_28a24de65dd340b5aad8f5902697df93_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceefdb5299d3646c69cd84d46cdcc504c9f9988f57f5ee50e31582ac903363c6e88f286a13cc5c37f5b63239f59696e6cad0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.5.1]--61数列极限的定义</span></a>
+<span>  {6}--62数列极限的四则运算</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004593172_f7c0e32a0861481f9a095c339c2505f7_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee74b0376996cb8d1d10f1f01d5b4b182b11cb7c0620dc217037d7e33fb7fb58705389325a1ccc8946e55eeaef69f71d550015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.6.1]--62数列极限的四则运算</span></a>
+<span>  {7}--63定积分的定义</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593166_84c6d8d5cf08415ba1c1ba366bd46b19_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee74b0376996cb8d1d10f1f01d5b4b182be32ef923ab57f121b9056d71bfff6008729acb3f861fc68cec1333ba7e477d070015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.7.1]--63定积分的定义</span></a>
+<span>  {8}--64定积分的定义（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004593173_8ab75b03d3ca4f36ab9922386ed1d8f1_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee13ad6f735eb4619804cf40613601500c852c3da3f678c1f84498946dcfd4813d143c84e3171f4c53d4298e668f0766080015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.8.1]--64定积分的定义（续）</span></a>
+<span>  {9}--65定积分的例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004592134_df136c9515fd4ad78224e2da38ef1c74_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee13ad6f735eb4619804cf40613601500ca722c9aab8dd3952bd34ce26cbc0d297c0b6b7b1eec310fe0b0be658e0bd87050015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.9.1]--65定积分的例题</span></a>
+<span>  {10}--66定积分的例题（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593165_de4f31dfeef64944aba6fb8614f88c93_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee548f814fa09e80ffad72b91ac6d1deb2cfce74bd6ed96511337f207d409c68af69490e70e2b218509561461bef3341490015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.10.1]--66定积分的例题（续）</span></a>
+<span>  {11}--67定积分的性质</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004593160_37b84ac16db747cfa16dd4103a4202c6_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee548f814fa09e80ffad72b91ac6d1deb271b38d91ecbd4d4bbcc40709f3e806af3d03f97f44090f6f8cb7937a464e68220015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.11.1]--67定积分的性质</span></a>
+<span>  {12}--68定积分的性质（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590150_4b581f33f402478b93ec4ce8c8623131_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee070b19704b75ed922b29a976ea8a71b96df74b6c85ad8376a830f2c340e8716d2e42f4872275afdd02e490d30c07018b0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.12.1]--68定积分的性质（续）</span></a>
+<span>  {13}--69微积分第一基本定理Part1</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/28/1004590152_9d2438d9c8744ee085f961994096244f_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee070b19704b75ed922b29a976ea8a71b9d7d2cc7d48871a9586e92e5f4dee9d0d15a990673e74d25d5cf6cccbe7d5f9810015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[5.13.1]--69微积分第一基本定理Part1</span></a></p><h2><a name="week6-integrationsandfundamentaltheoremofcalculus" class="md-header-anchor"></a><span>WEEK6 IntegrationsandFundamentalTheoremofCalculus</span></h2><p><span>  {1}--70微积分第一基本定理Part2</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004590165_0d559763c618426db9a65dd9f860e381_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeacd466d2d6437cfa77cdeba0fdb8ef4a2a0800638c7680630d8fe28a7176ddbdf78f24b369c7394f01c52d05115db1c50015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.1.1]--70微积分第一基本定理Part2</span></a>
+<span>  {2}--71微积分第一基本定理Part3</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004592151_4cd97c5425db48c3a1e47268576ba81a_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeacd466d2d6437cfa77cdeba0fdb8ef4a744d81545b03f20097fbb139a5fd533ba2233c3a504fee003b279a16ecd75bf60015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.2.1]--71微积分第一基本定理Part3</span></a>
+<span>  {3}--72微积分第一基本定理Part4</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004592152_7566326d1ecd4c2b8bc4efb32ad79d0a_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceec42b5fb6c46c6206170a13170c806b63c692fd4597bf4aa7621c16a14f9088c2bfec3538c463b081e76d9b42907fcadc0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.3.1]--72微积分第一基本定理Part</span></a>
+<span>  {4}--73微积分第一基本定理Part5</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004591152_b61e50d6db8f40abbf27c5469077dc0b_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceec42b5fb6c46c6206170a13170c806b63e52d18b42c354b5ebe9a4d52f3cdfb96e05abd0b32a76af0384c4b29e00e1d430015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.4.1]--73微积分第一基本定理Part5</span></a>
+<span>  {5}--74微积分第一基本定理Part6</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004590166_3efab0aa3435477bad140d242700b4be_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee5e5f41bf6d2a971b2b5466e58c00eb952085a36f179c5e2a8af675a962a794b3f19205fe2bf4d21d0579911596fedf520015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.5.1]--74微积分第一基本定理Part6</span></a>
+<span>  {6}--75微积分第一基本定理例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004591153_048da269d4f14518a0f0cb978e93aa77_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee5e5f41bf6d2a971b2b5466e58c00eb950456584af20ae4c4193489251af861cebcbf90ae90ddd0fa05213a174c76ce9a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.6.1]--75微积分第一基本定理例题</span></a>
+<span>  {7}--76微积分第二基本定理</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004590167_65e879afea2747c59420653d367b31bd_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceef5bede3ea1134f4525826d9e7e3c6daea0f7116b4225725fa3a9bc2636703dba2bf62851415d8682a19b1e7820a706ca0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.7.1]--76微积分第二基本定理</span></a>
+<span>  {8}--77微积分第二基本定理例题</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004592153_60a5075bdf234dcf98d7d09f87217655_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceef5bede3ea1134f4525826d9e7e3c6dae7a2f3a9b50ddd5f789c18ffb056a115dbb18289ae7a3ae596ec9b03f609624320015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.8.1]--77微积分第二基本定理例题</span></a>
+<span>  {9}--78面积计算</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004592154_b2b1cd9768834e0b819502ba351338ab_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceedcb5ed4648eb57d1a23f0546d329f843cb230852ae1684ab47ed511851e7e51562f0801304cdc17cffd78692d9f17d120015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.9.1]--78面积计算</span></a>
+<span>  {10}--79面积计算（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004593179_fd2a5bbfa3f54147aa414cfc091d9c60_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceedcb5ed4648eb57d1a23f0546d329f8431ec34ec499a1127d31e5e40809a60e6dd231a1822e422300fd888a8e9d8c6c4c0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.10.1]--79面积计算（续）</span></a>
+<span>  {11}--80面积计算（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004593180_116f06d459d6400b89a736764d65c6e2_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee9cee7cf0888a339193901d3a6876d11d989cfb57e6569a3e18cfc06bcea85358c1d2053689227234d2d5e092dde7298f0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.11.1]--80面积计算（续）</span></a>
+<span>  {12}--81不定积分与变数变换法</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004590168_557b67ba387f4d10ba8e795c1058c9f1_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee9cee7cf0888a339193901d3a6876d11d05533c296850bc6ab498c1d77f4af4021ef6608b1482a24506794a73ec1ca5b30015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.12.1]--81不定积分与变数变换法</span></a>
+<span>  {13}--82不定积分与变数变换法（续）</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/06/29/1004593178_7703b1bd1b1443a396ca1195b215bfb0_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeb9df167a9cef3a8a53cd28343e7661354b34a575e9c8b26d6cb581eb602f6ff5a0d2abbf03ec66ad4ee50172065a657b0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[6.13.1]--82不定积分与变数变换法（续）</span></a></p><h2><a name="week7-areasandvolumesfromdefiniteintegrals" class="md-header-anchor"></a><span>WEEK7 Areasandvolumesfromdefiniteintegrals</span></h2><p><span>  {1}--83更多面积计算</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/05/1004760186_460f8718c8264ee09cd030b98b32cf4f_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeb9df167a9cef3a8a53cd28343e7661359f011359ef7827cdf0385da9b70dbb4f146052dcfa983931c708ed6470858b1a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[7.1.1]--83更多面积计算</span></a>
+<span>  {2}--84旋转体体积方法一Part1</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/05/1004760187_53ddcc5cdb1849168b829d2bf0bbbc33_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee6018c33119176dfb79216be0ae5b6597761c0e113be24c2e4467768ca8c79c39e06a12640a6a9bb16315e7c32d5509ce0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[7.2.1]--84旋转体体积方法一Part1</span></a>
+<span>  {3}--85旋转体体积方法一Part2</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/05/1004760189_2d052e3f9f1f40b2bb95771139689024_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee6018c33119176dfb79216be0ae5b6597f83cd2f63ea3c65ec2b4a86a8d31d8e2783451dfb3ecb03286d58d9a515a634f0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[7.3.1]--85旋转体体积方法一Part2</span></a>
+<span>  {4}--86旋转体体积方法二Part1</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/05/1004760190_b0e55e5cdae245efabab6e2c8ebe14c9_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee609ea6bb1d8b06a58480304a2854d5fcde7e6b3ab7ba4929aca970ae51678c246ad177cc7bf0d163aa109a5eb89144f90015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[7.4.1]--86旋转体体积方法二Part1</span></a>
+<span>  {5}--87旋转体体积方法二Part2</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/05/1004761232_d24a2e2ed2dd4b4eaee561cc7e3222c6_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee609ea6bb1d8b06a58480304a2854d5fcd9128019026999ee19e6a177ca872aa9312dab5db360213d725a6f7a7f612de50015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[7.5.1]--87旋转体体积方法二Part2</span></a>
+<span>  {6}--88反函数</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/05/1004761235_dac33e4cba114ab3aed323867b1d9590_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeb163ad53385743f1e3b76bfd3725ec4b68eb0910d59647b317c106efb8f128338f90e59bb2f8b0b7138172f1121985a40015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[7.6.1]--88反函数</span></a>
+<span>  {7}--89反函数例题与微分</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/05/1004760195_524861caca1e4f8fbab6593efd9c4d8b_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceeb163ad53385743f1e3b76bfd3725ec4b5c960d82f4092f839344e6eed6940425e4771172d7d136674c6659ed59a563390015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[7.7.1]--89反函数例题与微分</span></a></p><h2><a name="week8-thenaturallogarithmfunction" class="md-header-anchor"></a><span>WEEK8 Thenaturallogarithmfunction</span></h2><p><span>  {1}--90介绍自然对数Part1</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004760200_86fd900819db47f89094eaf3c21ead92_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee3d504addb9cc7d9542125e3ca163caa856ac3923cdfb5a6f34f57cc05d9e93035a33454e874c8a40564724587ace77fb0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[8.1.1]--90介绍自然对数Part1</span></a>
+<span>  {2}--91介绍自然对数Part2</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004759224_446a50a75e414327be4ffe4ab75c0fa8_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee3d504addb9cc7d9542125e3ca163caa8580d9cb84dbcd2cb498c541515bbfb5584e14f57d2bd5b1b158f1d1ab1d30a2f0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[8.2.1]--91介绍自然对数Part2</span></a>
+<span>  {3}--92介绍自然对数Part3</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004762237_23c9a2be32c6407f9fdb08b0c7b266ca_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceebc6369816249943631cbd99c20374487c2867fa84c6d940156125c510710dd9cc81c837471de09ad37ecc43067737b620015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[8.3.1]--92介绍自然对数Part3</span></a>
+<span>  {4}--93介绍自然对数Part4</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004759225_a96ce611e08d47f2828ab40d499c14c1_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceebc6369816249943631cbd99c20374487749c22aaee20d293b582992bf0fa4287c3e3633df93d287e22475c928a9679c60015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[8.4.1]--93介绍自然对数Part</span></a>
+<span>  {5}--94自然对数之微分Part1</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004762238_40b7f60c0b1844fb963d60593b67c379_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceee362bb19197859110da3f9a53607fe6d0b3376f17629b290e9bdc8cd5ab076beca964450303fae0b4fbce4569e9557050015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[8.5.1]--94自然对数之微分Part1</span></a>
+<span>  {6}--95自然对数之微分Part2</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004761239_6e6bc41bf6af4f61b07420398066400e_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceee362bb19197859110da3f9a53607fe6d89157c7a654d1127a937d581e1fc79de1d1b7f77d0bd29bb8abf5b46f96dc7390015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[8.6.1]--95自然对数之微分Part2</span></a>
+<span>  {7}--96介绍自然指数函数Part1</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004762239_df1b7ddc66ef45228876a3c7fc972ac7_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee7498c74ab07f3f82fa5d94e5351cd5536fc4bd460fac1993535e2f59045742934b803c30c73f64a576e823e678ed41f10015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[8.7.1]--96介绍自然指数函数Part1</span></a></p><h2><a name="9--week9thenaturalexponentialfunctionandtheinversetrigonometri" class="md-header-anchor"></a><span>{9}--WEEK9Thenaturalexponentialfunctionandtheinversetrigonometri</span></h2><p><span>  {1}--97介绍自然指数函数Part2</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004759226_ae233aa4f53f4606aa7e3ee0e51cfddb_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee7498c74ab07f3f82fa5d94e5351cd5532b8287e55d63acda72fcbe36bd1d2c786f2a81d09e41d6c435c0e1989108dc6c0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.1.1]--97介绍自然指数函数Part2</span></a>
+<span>  {2}--98介绍自然指数函数Part3</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004761240_e581e66590a7472fbb212ee3323c9bcb_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee8ef70b3ccfbccf9b8002c0029881b69ac00ad27db1fe1e01e4295cf26f5e358a8a2f43ea24524f82ac013e7ea77574a90015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.2.1]--98介绍自然指数函数Part3</span></a>
+<span>  {3}--99自然指数函数之微积分</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004759227_cc12b4f262894953914081eaf9623b42_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee8ef70b3ccfbccf9b8002c0029881b69a6884a63390698a7dcfc614edeff12f84865c39be83d0a00df54f54fb8e4fc63a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.3.1]--99自然指数函数之微积分</span></a>
+<span>  {4}--100任意实数次方</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004759228_bce51afe65884681b1bb8e811fcf6d79_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee75c27b017bf9667fb0ab1fee8194e47083d7b1c2a40be604cbfede7de62d9f3a3d47dfb3a787fb424c00e7fcf79a25440015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.4.1]--100任意实数次方</span></a>
+<span>  {5}--101任意实数次方之微积分</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004760202_5e9bba9b4f7744d99c21a9a5d90bb0a1_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee75c27b017bf9667fb0ab1fee8194e470284c0565ef637b8c7152cfa13b0bc796d18edb31a29998c8bedefe2285e8a37d0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.5.1]--101任意实数次方之微积分</span></a>
+<span>  {6}--102反三角函数sincos</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004762247_1cbba52635d842d48f74cc1b0a346270_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceebc0cb6a6d8671107ecf3946b582556ddc5db5a6be91350ee163b83e63dbd7fabf83711fbc0299ef1702fca186af9e1cf0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.6.1]--102反三角函数sincos</span></a>
+<span>  {7}--103反三角函数tancot</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004759242_cb662f3af69a4ef7b3f5354a60841630_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abceebc0cb6a6d8671107ecf3946b582556ddb5d3cf0966fdd8c530e6aca9579076e31238a111e06d3d7e8caccc8794f5fc5a0015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.7.1]--103反三角函数tancot</span></a>
+<span>  {8}--104反三角函数seccsc</span>
+<a href='http://v.stu.126.net/mooc-video/nos/mp4/2016/08/06/1004759244_0491854aa2df4b93aeab966faedf96df_shd.mp4?ak=99ed7479ee303d1b1361b0ee5a4abcee38fb68af62c699bc35c2b4cbfd66076f37059126b6a2d9d49dd07742bf9d2dcca669e97f8053f527d5dc9afe598afcb80015e48ffc49c659b128bfe612dda086d65894b8ef217f1626539e3c9eb40879c29b730d22bdcadb1b4f67996129275fa4c38c6336120510aea1ae1790819de86e0fa3e09eeabea1b068b3d9b9b6597acf0c219eb000a69c12ce9d568813365b3e099fcdb77c69ca7cd6141d92c122af'><span>[9.8.1]--104反三角函数seccsc</span></a></p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p></div>
+</body>
+</html>

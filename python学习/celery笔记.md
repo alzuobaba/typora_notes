@@ -180,5 +180,9 @@ def my_task(user):
 参考链接：
 
 - http://funhacks.net/2016/12/13/celery/
-- https://celery.readthedocs.io/en/latest/userguide/tasks.html#tips-and-best-practices
+
+- [https://celery.readthedocs.io/en/latest/userguide/tasks.html#tips-and-best-practices](https://celery.readthedocs.io/en/latest/userguide/tasks.html#tips-and-best-practices)
+
 - http://celerytaskschecklist.com/
+
+  
